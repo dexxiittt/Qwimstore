@@ -1,1 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banner Slider Carousel Interaktif (RBAC Scalable)</title>
+  
+  <!-- Link Promotion Bar CSS -->
+  <link rel="stylesheet" href="promotion-bar.css">
+</head>
+<body>
+
+  <!-- Header Simulasi Switcher Role -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <h2>⚡ Promo Store Carousel</h2>
+      </div>
+      
+      <!-- Role Selector -->
+      <div class="role-selector-wrapper">
+        <label for="roleSelector"><strong>Role Simulasi:</strong></label>
+        <select id="roleSelector" class="role-select">
+          <option value="guest">Guest (Pengunjung)</option>
+          <option value="user" selected>User (Member Logged-in)</option>
+          <option value="admin">Admin (Pengelola)</option>
+        </select>
+        <span id="roleBadge" class="badge badge-user">USER</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Tabel Matriks Hak Akses -->
+    <section class="role-info-card">
+      <h3>Matriks Hak Akses Website & Slider</h3>
+      <div class="table-responsive">
+        <table class="role-table">
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Bisa Login</th>
+              <th>Bisa Edit / Tambah Website</th>
+              <th>Bisa Beli / Akses Produk</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="row-admin">
+              <td><strong>Admin</strong></td>
+              <td>✅ Ya</td>
+              <td>✅ Ya (Kelola Slider & Konten)</td>
+              <td>✅ Ya</td>
+            </tr>
+            <tr id="row-user">
+              <td><strong>User</strong></td>
+              <td>✅ Ya</td>
+              <td>❌ Tidak</td>
+              <td>✅ Ya</td>
+            </tr>
+            <tr id="row-guest">
+              <td><strong>Guest</strong></td>
+              <td>❌ Tidak</td>
+              <td>❌ Tidak</td>
+              <td>✅ Ya (Atau hanya lihat)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PROMOTION BANNER SLIDER CONTAINER -->
+    <section class="promotion-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Promo & Penawaran Spesial</h2>
+          <p class="section-subtitle">Geser/swipe untuk melihat penawaran menarik minggu ini!</p>
+        </div>
+      </div>
+
+      <!-- MAIN CAROUSEL COMPONENT -->
+      <div class="carousel-container" id="promotionCarousel">
+        <button class="carousel-nav nav-prev" id="prevBtn" aria-label="Slide Sebelumnya">‹</button>
+        
+        <div class="carousel-track-wrapper">
+          <div class="carousel-track" id="carouselTrack">
+            <!-- Disajikan secara dinamis via promotion-bar.js -->
+          </div>
+        </div>
+
+        <button class="carousel-nav nav-next" id="nextBtn" aria-label="Slide Selanjutnya">›</button>
+
+        <!-- Pagination Dots -->
+        <div class="carousel-pagination" id="carouselPagination"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL FORM ADMIN (TAMBAH & EDIT BANNER) -->
+  <div class="modal-overlay" id="bannerModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalTitle">Tambah Banner Baru</h3>
+        <button class="modal-close" id="closeModalBtn">&times;</button>
+      </div>
+      <form id="bannerForm" class="modal-form">
+        <input type="hidden" id="bannerId">
+        
+        <div class="form-group">
+          <label for="bannerTitle">Judul Promo *</label>
+          <input type="text" id="bannerTitle" required placeholder="Contoh: Diskon Mega Sale 70%">
+        </div>
+
+        <div class="form-group">
+          <label for="bannerSubtitle">Deskripsi Promo</label>
+          <input type="text" id="bannerSubtitle" placeholder="Contoh: Berlaku untuk semua produk elektronik">
+        </div>
+
+        <div class="form-group">
+          <label for="bannerBadge">Label / Badge Promo</label>
+          <input type="text" id="bannerBadge" placeholder="Contoh: HOT DEAL, SPECIAL, NEW">
+        </div>
+
+        <div class="form-group">
+          <label for="bannerImage">URL Gambar Banner *</label>
+          <input type="url" id="bannerImage" required placeholder="https://images.unsplash.com/photo-...">
+        </div>
+
+        <div class="form-group">
+          <label for="bannerBtnText">Teks Tombol CTA</label>
+          <input type="text" id="bannerBtnText" placeholder="Contoh: Beli Sekarang">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancelModalBtn">Batal</button>
+          <button type="submit" class="btn btn-primary">Simpan Banner</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Link Promotion Bar JS -->
+  <script src="promotion-bar.js"></script>
+</body>
+</html>
 
